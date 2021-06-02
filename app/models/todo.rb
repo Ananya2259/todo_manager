@@ -13,7 +13,7 @@ class Todo < ActiveRecord::Base
   end
 
   def self.overdue
-    where("due_date < ?", Date.today)
+    where("due_date < ? ", Date.today)
   end
   def self.duetoday
     where(due_date: Date.today)
@@ -26,10 +26,13 @@ class Todo < ActiveRecord::Base
     all.map { |todo| todo.to_displayable_string }
   end
 
-  def self.completed
+  def self.completedcheck
     where(completed: true)
   end
 
+  def self.notcompleted
+    where(completed: false)
+  end
   def self.show_list
     puts "My Todo-list\n\n"
     #Checks weather the duedate is overdue filters the statements in that date and displays it.

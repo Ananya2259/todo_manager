@@ -110,3 +110,7 @@ body {
   color: #453C52;
   margin-left: 10px;
 }
+
+.TextItem-LineThrough {
+  text-decoration: line-through;
+}

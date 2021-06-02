@@ -24,6 +24,8 @@ class UsersController < ApplicationController
       render plain: "false"
     elsif user.password == password
       render plain: "true"
+    else
+      render plain: "false"
     end
   end
 end
