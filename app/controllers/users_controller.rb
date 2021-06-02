@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     name = params[:name]
     email = params[:email]
     password = params[:password]
-    new_user = User.create(name: name, email: email, password: password)
+    new_user = User.create!(name: name, email: email, password: password)
     response_text = "New username created with #{name}"
     render plain: response_text
   end
@@ -19,12 +19,11 @@ class UsersController < ApplicationController
   def login
     email = params[:email]
     password = params[:password]
-    useremail = User.where("email = ?", email).first
-    userpassword = User.where("password = ?", password).first
-    if useremail != nil && userpassword != nil
-      render plain: "true"
-    else
+    user = User.where("email = ?", email).first
+    if user == nil
       render plain: "false"
+    elsif user.password == password
+      render plain: "true"
     end
   end
 end
