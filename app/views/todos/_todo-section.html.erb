@@ -8,7 +8,7 @@
      <li class="TodoItem">
        <label class="TodoItem-container">
          <input type="checkbox" class="TodoItem-checkbox" <%= todo.completed ? "checked" : "" %>>
-         <p class=<%= (todo.completed) ? "TextItem-LineThrough" : "" %>>
+         <p <%= (todo.completed) ? "class= TextItem-LineThrough" : "" %>>
            <%= todo.todo_text %>
          </p>
          <% if show_due_date %>
