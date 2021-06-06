@@ -26,7 +26,7 @@ class Todo < ActiveRecord::Base
     all.map { |todo| todo.to_displayable_string }
   end
 
-  def self.completedcheck
+  def self.completed
     where(completed: true)
   end
 

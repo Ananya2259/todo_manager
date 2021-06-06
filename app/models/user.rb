@@ -4,3 +4,6 @@ class User < ActiveRecord::Base
     "Name:#{name} Email:#{email} Password:#{password}"
   end
 end
+
+#date = Date.today
+Todo.create!(todo_text: "DRink water", due_date: date - 1, completed: true)
