@@ -8,24 +8,21 @@
      <li class="TodoItem">
        <label class="TodoItem-container">
          <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
-             <input
-              type="checkbox"
-               name= "completed"
-               class="TodoItem-checkbox" <%= todo.completed ? "checked" : "" %>
-               onclick ="this.form.submit()">
-                      <% end %>
-          <p class= <%= (todo.completed) ? "TextItem-LineThrough" : "" %>>
-            <%= todo.todo_text %>
-          </p>
-          <% if show_due_date %>
-           <p class="TodoItem-dueDate"><%= todo.due_date.to_s(:short) %></p>
-          <% end %>
-          <a href="javascript:void(0)" class="TodoItem-delete">
-          <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
-           <input type = "imgage" src="trashcan.svg">
-           <% end %>
-          </a>
-        </label>
+         <input type="checkbox" name="completed" class="TodoItem-checkbox" <%= todo.completed ? "checked" : "" %>
+           onclick="this.form.submit()">
+         <% end %>
+         <p class=<%= (todo.completed) ? "TextItem-LineThrough" : "" %>>
+           <%= todo.todo_text %>
+         </p>
+         <% if show_due_date %>
+         <p class="TodoItem-dueDate">
+           <%= todo.due_date.to_s(:short) %>
+         </p>
+         <% end %>
+         <%= form_with(url: "/todos/#{todo.id}", class: "TodoItem-delete", method: "delete") do %>
+            <input type="image" src="trashcan.svg">
+         <% end %>
+       </label>
      </li>
      <% end %>
    </ul>
