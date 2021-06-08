@@ -1,9 +1,3 @@
-# class Todo < ActiveRecord::Base
-#   def to_pleasant_string
-#     is_completed = completed ? "[X]" : "[ ]"
-#     "#{id}.#{due_date.to_s(:long)} #{todo_text} #{is_completed}"
-#   end
-# end
 class Todo < ActiveRecord::Base
   #Helps in Displaying everything according to the expected format.
   def to_displayable_string

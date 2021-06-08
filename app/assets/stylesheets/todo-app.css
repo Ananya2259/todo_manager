@@ -79,7 +79,7 @@
   margin: 8px;
 }
 
-.TodoItem-delete>img {
+.TodoItem-delete>input {
   width: 16px;
 }
 
