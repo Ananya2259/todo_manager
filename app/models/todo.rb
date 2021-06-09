@@ -19,4 +19,8 @@ class Todo < ActiveRecord::Base
   def self.notcompleted
     where(completed: false)
   end
+
+  def self.of_user(user)
+    all.where(user_id: user.id)
+  end
 end
