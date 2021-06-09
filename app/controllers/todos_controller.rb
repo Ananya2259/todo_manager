@@ -5,6 +5,8 @@ class TodosController < ApplicationController
   end
 
   def show
+    id = params[:id]
+    todo = Todo.find(id)
     render "todo"
   end
 
