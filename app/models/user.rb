@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
-  #creates a format to display the user details.
+  has_many :todos
+  has_secure_password
+
   def to_user_details
-    "Name:#{name} Email:#{email} Password:#{password}"
+    " Email:#{email} Password:#{password}"
   end
 end
