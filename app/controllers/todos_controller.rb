@@ -7,7 +7,7 @@ class TodosController < ApplicationController
 
   def show
     id = params[:id]
-    todo = Todo.find(id).of_user(current_user)
+    todo = Todo.of_user(current_user).find(id)
     render "todo"
   end
 
@@ -18,15 +18,15 @@ class TodosController < ApplicationController
     if new_todo.save
       redirect_to todos_path
     else
-     flash[:error] = new_todo.errors.full_messages.join(", ")
-     redirect_to todos_path
+      flash[:error] = new_todo.errors.full_messages.join(", ")
+      redirect_to todos_path
     end
   end
 
   def update
     id = params[:id]
     completed = params[:completed]
-    todo = Todo.find(id).of_user(current_user)
+    todo = Todo.of_user(current_user).find(id)
     todo.completed = completed
     todo.save!
     redirect_to todos_path
@@ -34,7 +34,7 @@ class TodosController < ApplicationController
 
   def destroy
     id = params[:id]
-    todo = Todo.find(id).of_user(current_user)
+    todo = Todo.of_user(current_user).find(id)
     todo.destroy
     redirect_to todos_path
   end
