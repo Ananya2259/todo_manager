@@ -4,9 +4,7 @@ class UsersController < ApplicationController
   def new
     render "users/new"
   end
-
   #shows all the users
-
   def index
     render plain: User.all.map { |user| user.to_user_details }.join("\n")
   end
@@ -25,20 +23,6 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_path
       flash[:error] = user.errors.full_messages.join(", ")
-    end
-  end
-
-  #Checks weather the email and password is already available in the user details and if it is available it will return false else returns a true.
-  def login
-    email = params[:email]
-    password = params[:password_digest]
-    user = User.where("email = ?", email).first
-    if user == nil
-      render plain: "false"
-    elsif user.password == password
-      render plain: "true"
-    else
-      render plain: "false"
     end
   end
 end
